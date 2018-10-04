@@ -41,7 +41,8 @@ class Heap:
 
     def _verify_if_parent_is_higher(self, index):
         if self.elements[self._parent_index(index)] < self.elements[index]:
-            self.elements[index], self.elements[self._parent_index(index)] = self.elements[self._parent_index(index)], self.elements[index]
+            self.elements[index], self.elements[self._parent_index(index)] = \
+                self.elements[self._parent_index(index)], self.elements[index]
         if self._parent_index(index) > 0:
             self._verify_if_parent_is_higher(self._parent_index(index))
 
@@ -55,11 +56,14 @@ class Heap:
                 new_index = left_child_index
 
         if len(self.elements) >= right_child_index + 1:
-            if self.elements[index] < self.elements[right_child_index] and self.elements[right_child_index] > self.elements[left_child_index]:
+            if self.elements[index] < self.elements[right_child_index] and \
+                    self.elements[right_child_index] > \
+                    self.elements[left_child_index]:
                 new_index = right_child_index
 
         if index != new_index:
-            self.elements[index], self.elements[new_index] = self.elements[new_index], self.elements[index]
+            self.elements[index], self.elements[new_index] = \
+                self.elements[new_index], self.elements[index]
             self._balance(new_index)
 
     def print_array(self):
